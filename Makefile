@@ -11,7 +11,17 @@ PART0_SRC_TEST			=	$(PART0_TST_PATH)/$(NAME_FIND)_test.cpp
 TEST_NAME_FIND 			= 	test_$(NAME_FIND)
 
 #################################################					
+PART1_PATH 				= 	./Algorithm
+PART1_SRC_PATH			=	./Algorithm/src
+PART1_TST_PATH			=	./Algorithm/tests
+PART1_INC_PATH			=	./Algorithm/include
+NAME_MYALGORITHMS		=	MyAlgorithms
+PART1_SRC				=	$(PART1_SRC_PATH)/MyAlgorithms.cpp
 
+PART1_SRC_TEST			=	$(PART1_TST_PATH)/$(NAME_MYALGORITHMS)_test.cpp
+TEST_NAME_MYALGORITHMS 	= 	test_$(NAME_MYALGORITHMS)
+
+#################################################	
 OBJS					=	$(SRCS:.cpp=.o)
 CLEAN					=	clean
 FCLEAN					=	fclean
@@ -20,7 +30,7 @@ RM						=	rm -rf
 clean					:
 							$(RM) $(OBJS)
 							@$(MAKE) $(CLEAN) -C $(PART0_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
@@ -31,8 +41,8 @@ fclean					:	clean
 							$(RM) $(NAME) $(TEST_NAME)
 							@$(MAKE) $(FCLEAN) -C $(PART0_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART0_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART1_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART1_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART1_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART1_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
@@ -51,7 +61,18 @@ tests_run_find			:	fclean
 							@$(MAKE) -C $(PART0_TST_PATH)
 							$(PART0_TST_PATH)/$(TEST_NAME_FIND)
 
+algorithm 					: 	fclean
+							@$(MAKE) -C $(PART1_PATH)
+							$(PART1_PATH)/$(NAME_MYALGORITHMS)
+
+tests_run_algorithm			:	fclean
+							@$(MAKE) -C $(PART1_TST_PATH)
+							$(PART1_TST_PATH)/$(TEST_NAME_MYALGORITHMS)
+
 tests_run				:	fclean
 							@$(MAKE) tests_run_find
 
-.PHONY					: 	all clean fclean re tests_run find tests_run_find
+.PHONY					: 	all clean fclean re \
+							tests_run \
+							find tests_run_find \
+							algorithm tests_run_algorithm
