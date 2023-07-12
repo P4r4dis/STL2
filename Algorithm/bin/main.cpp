@@ -1,4 +1,4 @@
-#include "MyAlgorithms.hpp"
+#include "../include/MyAlgorithms.hpp"
 
 #include <vector>
 #include <iostream>
@@ -11,7 +11,7 @@ static bool isGreaterThan(int a, int b)
 
 static void showMe(int i)
 {
-		std::cout << std::setw(4) << i << ``, ``;
+		std::cout << std::setw(4) << i << ", ";
 }
 
 static void mult2(int& i)
