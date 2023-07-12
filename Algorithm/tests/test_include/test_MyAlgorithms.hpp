@@ -79,11 +79,11 @@ typename T::iterator vGiveMeTheFirst(T& container, int value)
         return std::find(container.begin(), container.end(), value);
 }
 
-// template<typename T>
-// typename T::iterator vRemoveDuplicate(T& container)
-// {
-//         return std::XXXXXXXXXX(container.begin(), container.end());
-// }
+template<typename T>
+typename T::iterator vRemoveDuplicate(T& container)
+{
+        return std::unique(container.begin(), container.end());
+}
 
 // template<typename T>
 // void vFusionOrderedLists(T const & container1, T const & container2, T& containerToFill)
