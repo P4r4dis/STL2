@@ -55,11 +55,11 @@ void vApply(T itFrom, T itTo, U funcPtr)
         std::for_each(itFrom, itTo, funcPtr);
 }
 
-// template<typename T>
-// void vFlip(T& container)
-// {
-//         std::XXXXXXXXXX(container.begin(), container.end());
-// }
+template<typename T>
+void vFlip(T& container)
+{
+        std::reverse(container.begin(), container.end());
+}
 
 // template<typename T>
 // void vToAscOrder(T& container)
