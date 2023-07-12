@@ -19,11 +19,11 @@ size_t vHowMany(T const& container, int value)
         return std::count(container.begin(), container.end(), value);
 }
 
-// template<typename T>
-// bool vIsSimilar(T const& container, int* values)
-// {
-//         return std::XXXXXXXXXX(container.begin(), container.end(), values);
-// }
+template<typename T>
+bool vIsSimilar(T const& container, int* values)
+{
+        return std::equal(container.begin(), container.end(), values);
+}
 
 // template<typename T>
 // void vAssign(T itFrom, T itTo, int value)
