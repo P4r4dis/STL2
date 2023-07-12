@@ -73,11 +73,11 @@ void vApply(T itFrom, T itTo, U funcPtr)
 //         std::XXXXXXXXXX(container.begin(), container.end(), cmpFuncPtr);
 // }
 
-// template<typename T>
-// typename T::iterator vGiveMeTheFirst(T& container, int value)
-// {
-//         return std::XXXXXXXXXX(container.begin(), container.end(), value);
-// }
+template<typename T>
+typename T::iterator vGiveMeTheFirst(T& container, int value)
+{
+        return std::find(container.begin(), container.end(), value);
+}
 
 // template<typename T>
 // typename T::iterator vRemoveDuplicate(T& container)
