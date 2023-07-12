@@ -49,11 +49,11 @@ void vAssign(T itFrom, T itTo, int value)
 //         std::XXXXXXXXXX(container.begin(), container.begin() + nbShift, container.end());
 // }
 
-// template<typename T, typename U>
-// void vApply(T itFrom, T itTo, U funcPtr)
-// {
-//         std::XXXXXXXXXX(itFrom, itTo, funcPtr);
-// }
+template<typename T, typename U>
+void vApply(T itFrom, T itTo, U funcPtr)
+{
+        std::for_each(itFrom, itTo, funcPtr);
+}
 
 // template<typename T>
 // void vFlip(T& container)
