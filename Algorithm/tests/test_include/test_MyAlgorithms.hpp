@@ -85,10 +85,10 @@ typename T::iterator vRemoveDuplicate(T& container)
         return std::unique(container.begin(), container.end());
 }
 
-// template<typename T>
-// void vFusionOrderedLists(T const & container1, T const & container2, T& containerToFill)
-// {
-//         std::XXXXXXXXXX(container1.begin(), container1.end(), container2.begin(), container2.end(), containerToFill.begin());
-// }
+template<typename T>
+void vFusionOrderedLists(T const & container1, T const & container2, T& containerToFill)
+{
+        std::merge(container1.begin(), container1.end(), container2.begin(), container2.end(), containerToFill.begin());
+}
 
 #endif
