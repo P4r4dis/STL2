@@ -67,11 +67,11 @@ void vToAscOrder(T& container)
         std::sort(container.begin(), container.end());
 }
 
-// template<typename T>
-// void vToSpecificOrder(T& container, bool (*cmpFuncPtr)(int, int))
-// {
-//         std::XXXXXXXXXX(container.begin(), container.end(), cmpFuncPtr);
-// }
+template<typename T>
+void vToSpecificOrder(T& container, bool (*cmpFuncPtr)(int, int))
+{
+        std::sort(container.begin(), container.end(), cmpFuncPtr);
+}
 
 template<typename T>
 typename T::iterator vGiveMeTheFirst(T& container, int value)
