@@ -43,11 +43,11 @@ void vAssign(T itFrom, T itTo, int value)
 //           return std::XXXXXXXXXX(container.begin(), container.end(), value);
 // }
 
-// template<typename T>
-// void vShift(T& container, int nbShift)
-// {
-//         std::XXXXXXXXXX(container.begin(), container.begin() + nbShift, container.end());
-// }
+template<typename T>
+void vShift(T& container, int nbShift)
+{
+        std::rotate(container.begin(), container.begin() + nbShift, container.end());
+}
 
 template<typename T, typename U>
 void vApply(T itFrom, T itTo, U funcPtr)
