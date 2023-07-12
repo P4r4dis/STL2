@@ -21,6 +21,18 @@ PART1_SRC				=	$(PART1_SRC_PATH)/MyAlgorithms.cpp
 PART1_SRC_TEST			=	$(PART1_TST_PATH)/$(NAME_MYALGORITHMS)_test.cpp
 TEST_NAME_MYALGORITHMS 	= 	test_$(NAME_MYALGORITHMS)
 
+#################################################
+PART2_PATH 				= 	./Caesar
+PART2_SRC_PATH			=	./Caesar/src
+PART2_TST_PATH			=	./Caesar/tests
+PART2_INC_PATH			=	./Caesar/include
+NAME_CAESAR				=	Caesar
+PART2_SRC				=	$(PART2_SRC_PATH)/Caesar.cpp \
+							$(PART2_SRC_PATH)/OneTime.cpp
+
+PART2_SRC_TEST			=	$(PART2_TST_PATH)/$(NAME_CAESAR)_test.cpp
+TEST_NAME_CAESAR	 	= 	test_$(NAME_CAESAR)
+
 #################################################	
 OBJS					=	$(SRCS:.cpp=.o)
 CLEAN					=	clean
@@ -31,7 +43,7 @@ clean					:
 							$(RM) $(OBJS)
 							@$(MAKE) $(CLEAN) -C $(PART0_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
@@ -43,8 +55,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART0_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART1_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART2_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART3_PATH)
 # @$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
@@ -69,10 +81,19 @@ tests_run_algorithm			:	fclean
 							@$(MAKE) -C $(PART1_TST_PATH)
 							$(PART1_TST_PATH)/$(TEST_NAME_MYALGORITHMS)
 
+caesar	 					: 	fclean
+							@$(MAKE) -C $(PART2_PATH)
+							$(PART2_PATH)/$(NAME_CAESAR)
+
+tests_run_caesar			:	fclean
+							@$(MAKE) -C $(PART2_TST_PATH)
+							$(PART2_TST_PATH)/$(TEST_NAME_CAESAR)
+
 tests_run				:	fclean
 							@$(MAKE) tests_run_find
 
 .PHONY					: 	all clean fclean re \
 							tests_run \
 							find tests_run_find \
-							algorithm tests_run_algorithm
+							algorithm tests_run_algorithm \
+							caesar tests_run_caesar
