@@ -37,11 +37,11 @@ void vFindAndModify(T& container, int oldValue, int newValue)
           std::replace(container.begin(), container.end(), oldValue, newValue);
 }
 
-// template<typename T>
-// typename T::iterator vFindAndKill(T& container, int value)
-// {
-//           return std::XXXXXXXXXX(container.begin(), container.end(), value);
-// }
+template<typename T>
+typename T::iterator vFindAndKill(T& container, int value)
+{
+          return std::remove(container.begin(), container.end(), value);
+}
 
 template<typename T>
 void vShift(T& container, int nbShift)
