@@ -13,11 +13,11 @@ void vPrint(T const& container, void (*showFuncPtr)(int))
         std::cout << std::endl;
 }
 
-// template<typename T>
-// size_t vHowMany(T const& container, int value)
-// {
-//         return std::XXXXXXXXXX(container.begin(), container.end(), value);
-// }
+template<typename T>
+size_t vHowMany(T const& container, int value)
+{
+        return std::count(container.begin(), container.end(), value);
+}
 
 // template<typename T>
 // bool vIsSimilar(T const& container, int* values)
