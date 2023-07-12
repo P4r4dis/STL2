@@ -25,11 +25,11 @@ bool vIsSimilar(T const& container, int* values)
         return std::equal(container.begin(), container.end(), values);
 }
 
-// template<typename T>
-// void vAssign(T itFrom, T itTo, int value)
-// {
-//           std::XXXXXXXXXX(itFrom, itTo, value);
-// }
+template<typename T>
+void vAssign(T itFrom, T itTo, int value)
+{
+          std::fill(itFrom, itTo, value);
+}
 
 // template<typename T>
 // void vFindAndModify(T& container, int oldValue, int newValue)
