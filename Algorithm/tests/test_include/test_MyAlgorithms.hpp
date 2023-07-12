@@ -31,11 +31,11 @@ void vAssign(T itFrom, T itTo, int value)
           std::fill(itFrom, itTo, value);
 }
 
-// template<typename T>
-// void vFindAndModify(T& container, int oldValue, int newValue)
-// {
-//           std::XXXXXXXXXX(container.begin(), container.end(), oldValue, newValue);
-// }
+template<typename T>
+void vFindAndModify(T& container, int oldValue, int newValue)
+{
+          std::replace(container.begin(), container.end(), oldValue, newValue);
+}
 
 // template<typename T>
 // typename T::iterator vFindAndKill(T& container, int value)
