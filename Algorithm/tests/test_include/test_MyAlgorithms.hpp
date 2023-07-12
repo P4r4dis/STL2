@@ -61,11 +61,11 @@ void vFlip(T& container)
         std::reverse(container.begin(), container.end());
 }
 
-// template<typename T>
-// void vToAscOrder(T& container)
-// {
-//         std::XXXXXXXXXX(container.begin(), container.end());
-// }
+template<typename T>
+void vToAscOrder(T& container)
+{
+        std::sort(container.begin(), container.end());
+}
 
 // template<typename T>
 // void vToSpecificOrder(T& container, bool (*cmpFuncPtr)(int, int))
