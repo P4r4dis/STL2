@@ -2,7 +2,9 @@
     #define             __CAESAR_HPP__
 
 #include <cctype>
+#include <cstring>
 #include <iostream>
+#include <cstdint>
 #include "IEncryptionMethod.hpp"
 class                   Caesar : public IEncryptionMethod
 {
@@ -10,6 +12,9 @@ class                   Caesar : public IEncryptionMethod
         Caesar(void);
 
         void            encryptChar(char plainchar);
+        void            decryptChar(char cipherchar);
+        void            reset(void);
+        int             getShift(void) const;
     
     private:
         int             _shift;
