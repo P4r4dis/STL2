@@ -1,4 +1,4 @@
-#include "../test_include/test_OneTime.hpp"
+#include "../include/OneTime.hpp"
 
 OneTime::OneTime(const std::string &key) : _keyIndex(0), _key(key)
 {}
@@ -46,6 +46,7 @@ void        OneTime::decryptChar(char cipherchar)
         char base = isupper(cipherchar) ?  'A' : 'a';
         // Step 2.3: shift calcul
         int shift = -(keyChar - 'a');
+        // Step2.4: decrypt
         encryptedChar = (cipherchar - base + shift + 26) % 26 + base;
     }
     // Step 3: Print the encrypted character
