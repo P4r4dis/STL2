@@ -1,4 +1,4 @@
-#include "../test_include/test_OneTime.hpp"
+#include "../include/OneTime.hpp"
 
 OneTime::OneTime(const std::string &key) : _keyIndex(0), _key(key)
 {}

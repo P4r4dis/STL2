@@ -33,18 +33,31 @@ PART2_SRC				=	$(PART2_SRC_PATH)/Caesar.cpp \
 PART2_SRC_TEST			=	$(PART2_TST_PATH)/$(NAME_CAESAR)_test.cpp
 TEST_NAME_CAESAR	 	= 	test_$(NAME_CAESAR)
 
+#################################################
+PART3_PATH 				= 	./Wrapper
+PART3_SRC_PATH			=	./Wrapper/src
+PART3_TST_PATH			=	./Wrapper/tests
+PART3_INC_PATH			=	./Wrapper/include
+NAME_WRAPPER			=	Wrapper
+PART3_SRC				=	$(PART3_SRC_PATH)/Caesar.cpp \
+							$(PART3_SRC_PATH)/OneTime.cpp \
+							$(PART3_SRC_PATH)/Encryption.cpp
+
+PART3_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_WRAPPER)_test.cpp
+TEST_NAME_WRAPPER	 	= 	test_$(NAME_WRAPPER)
+
 #################################################	
 OBJS					=	$(SRCS:.cpp=.o)
 CLEAN					=	clean
 FCLEAN					=	fclean
 RM						=	rm -rf
 
-clean					:
+clean					:	
 							$(RM) $(OBJS)
 							@$(MAKE) $(CLEAN) -C $(PART0_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
 
@@ -57,12 +70,9 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART1_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART3_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART4_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART5_TST_PATH)
-# @$(MAKE) $(FCLEAN) -C $(PART5_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
+
 re						: 	fclean all
 
 find 					: 	fclean
@@ -73,21 +83,29 @@ tests_run_find			:	fclean
 							@$(MAKE) -C $(PART0_TST_PATH)
 							$(PART0_TST_PATH)/$(TEST_NAME_FIND)
 
-algorithm 					: 	fclean
+algorithm 				: 	fclean
 							@$(MAKE) -C $(PART1_PATH)
 							$(PART1_PATH)/$(NAME_MYALGORITHMS)
 
-tests_run_algorithm			:	fclean
+tests_run_algorithm		:	fclean
 							@$(MAKE) -C $(PART1_TST_PATH)
 							$(PART1_TST_PATH)/$(TEST_NAME_MYALGORITHMS)
 
-caesar	 					: 	fclean
+caesar	 				: 	fclean
 							@$(MAKE) -C $(PART2_PATH)
 							$(PART2_PATH)/$(NAME_CAESAR)
 
-tests_run_caesar			:	fclean
+tests_run_caesar		:	fclean
 							@$(MAKE) -C $(PART2_TST_PATH)
 							$(PART2_TST_PATH)/$(TEST_NAME_CAESAR)
+
+wrapper	 				: 	fclean
+							@$(MAKE) -C $(PART3_PATH)
+							$(PART3_PATH)/$(NAME_WRAPPER)
+
+tests_run_wrapper		:	fclean
+							@$(MAKE) -C $(PART3_TST_PATH)
+							$(PART3_TST_PATH)/$(TEST_NAME_WRAPPER)
 
 tests_run				:	fclean
 							@$(MAKE) tests_run_find
@@ -96,4 +114,5 @@ tests_run				:	fclean
 							tests_run \
 							find tests_run_find \
 							algorithm tests_run_algorithm \
-							caesar tests_run_caesar
+							caesar tests_run_caesar \
+							wrapper tests_run_wrapper
