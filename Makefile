@@ -46,6 +46,17 @@ PART3_SRC				=	$(PART3_SRC_PATH)/Caesar.cpp \
 PART3_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_WRAPPER)_test.cpp
 TEST_NAME_WRAPPER	 	= 	test_$(NAME_WRAPPER)
 
+#################################################
+PART4_PATH 				= 	./Container
+PART4_SRC_PATH			=	./Container/src
+PART4_TST_PATH			=	./Container/tests
+PART4_INC_PATH			=	./Container/include
+NAME_CONTAINER			=	Container
+#PART4_SRC				=	
+
+PART4_SRC_TEST			=	$(PART3_TST_PATH)/$(NAME_CONTAINER)_test.cpp
+TEST_NAME_CONTAINER	 	= 	test_$(NAME_CONTAINER)
+
 #################################################	
 OBJS					=	$(SRCS:.cpp=.o)
 CLEAN					=	clean
@@ -58,7 +69,7 @@ clean					:
 							@$(MAKE) $(CLEAN) -C $(PART1_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART2_TST_PATH)
 							@$(MAKE) $(CLEAN) -C $(PART3_TST_PATH)
-# @$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(CLEAN) -C $(PART4_TST_PATH)
 # @$(MAKE) $(CLEAN) -C $(PART5_TST_PATH)
 
 
@@ -72,6 +83,8 @@ fclean					:	clean
 							@$(MAKE) $(FCLEAN) -C $(PART2_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_TST_PATH)
 							@$(MAKE) $(FCLEAN) -C $(PART3_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_TST_PATH)
+							@$(MAKE) $(FCLEAN) -C $(PART4_PATH)
 
 re						: 	fclean all
 
@@ -107,6 +120,14 @@ tests_run_wrapper		:	fclean
 							@$(MAKE) -C $(PART3_TST_PATH)
 							$(PART3_TST_PATH)/$(TEST_NAME_WRAPPER)
 
+container	 			: 	fclean
+							@$(MAKE) -C $(PART4_PATH)
+							$(PART4_PATH)/$(NAME_CONTAINER)
+
+tests_run_container		:	fclean
+							@$(MAKE) -C $(PART4_TST_PATH)
+							$(PART4_TST_PATH)/$(TEST_NAME_CONTAINER)
+
 tests_run				:	fclean
 							@$(MAKE) tests_run_find
 
@@ -115,4 +136,5 @@ tests_run				:	fclean
 							find tests_run_find \
 							algorithm tests_run_algorithm \
 							caesar tests_run_caesar \
-							wrapper tests_run_wrapper
+							wrapper tests_run_wrapper \
+							container tests_run_container
